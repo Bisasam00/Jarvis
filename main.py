@@ -5,76 +5,77 @@ import json
 from time import time
 from datetime import datetime
 
-TOKEN = 'ODg1ODMzNTM2MTEwNzIzMTMz.YTsyxQ.ywXJKp7Cl4u4eZsACC58FxaifgE'
+config_file = open("config.json")
+TOKEN = json.load(config_file)["token"]
 
-quotes = ["“Part of the journey is the end.”~ Tony Stark, Avengers: Endgame",
+quotes = ["“Part of the journey is the end.”~ Tony Stark, *Avengers: Endgame*",
 "“Tony, trying to get you to stop has been one of the few failures of my entire life.” \
-~ Pepper Potts, Avengers: Endgame",
-"“No amount of money ever bought a second of time.” ~ Tony Stark, Avengers: Endgame",
+~ Pepper Potts, *Avengers: Endgame*",
+"“No amount of money ever bought a second of time.” ~ Tony Stark, *Avengers: Endgame*",
 "“You know, I keep telling everybody they should move on and grow. Some do. But not us.” \
-~ Steve Rogers, Avengers: Endgame",
+~ Steve Rogers, *Avengers: Endgame*",
 "“It's not about how much we lost. It's about how much we have left.” \
-~ Tony Stark, Avengers: Endgame",
+~ Tony Stark, *Avengers: Endgame*",
 "“No mistakes. No do-overs. Look out for each other. This is the fight of our lives.” \
-~ Steve Rogers, Avengers: Endgame",
+~ Steve Rogers, *Avengers: Endgame*",
 "“The hardest choices require the strongest wills.” \
-~ Thanos, Avengers: Infinity War",
+~ Thanos, *Avengers: Infinity War*",
 "“Today we don’t fight for one life, we fight for all of them.” \
-~ Black Panther, Avengers: Infinity War",
+~ Black Panther, *Avengers: Infinity War*",
 "“It’s not enough to be against something. You have to be for something better.” \
-~ Tony Stark, Captain America: Civil War",
+~ Tony Stark, *Captain America: Civil War*",
 "“I would rather be a good man than a great king.” \
-~ Thor, Thor: The Dark World",
+~ Thor, *Thor: The Dark World*",
 "“I choose to run towards my problems, and not away from them. \
 Because that–because that's what heroes do.” \
-~ Thor, Thor: Ragnarok",
+~ Thor, *Thor: Ragnarok",
 "“But a thing isn’t beautiful because it lasts. It’s a privilege to be among them.” \
-~ Vision, Avengers: Age of Ultron",
+~ Vision, *Avengers: Age of Ultron*",
 "“The world has changed and none of us can go back. \
 All we can do is our best, and sometimes the best that we can do is to start over.” \
-~ Peggy Carter, Captain America: The First Avenger",
-"“Teach Me.” ~Stephen Strange, Doctor Strange",
+~ Peggy Carter, *Captain America: The First Avenger*",
+"“Teach Me.” ~Stephen Strange, *Doctor Strange*",
 "“Faith is my sword. Truth is my shield. Knowledge my armor.” \
-~Stephen Strange, Doctor Strange",
+~Stephen Strange, *Doctor Strange*",
 "“I had my eyes opened. I came to realize that \
 I had more to offer this world than just making things that blow up.” \
-~ Tony Stark, Iron Man",
+~ Tony Stark, *Iron Man*",
 "“No man can win every battle, but no man should fall without a struggle.” \
-~ Peter Parker, Spider-Man: Homecoming",
-"“I am Iron Man.” ~ Tony Stark, Iron Man, Avengers: Endgame",
-"“Hulk smash!” ~ Bruce Banner, The Incredible Hulk",
+~ Peter Parker, *Spider-Man: Homecoming*",
+"“I am Iron Man.” ~ Tony Stark, *Iron Man, Avengers: Endgame*",
+"“Hulk smash!” ~ Bruce Banner, *The Incredible Hulk*",
 "“I don't know what you've got inside you already. The mix could be… an abomination.” \
-~ Samuel Sterns, The Incredible Hulk",
+~ Samuel Sterns, *The Incredible Hulk*",
 "“Look, it’s me, I’m here, deal with it. Let’s move on.” \
-~ James Rhodes, Iron Man 2",
+~ James Rhodes, *Iron Man 2*",
 "“How ironic, Tony. Trying to rid of the world of weapons, \
 you gave it its best one ever! And now, I'm going to kill you with it!” \
-~ Obadiah Stane, Iron Man 2",
+~ Obadiah Stane, *Iron Man 2*",
 "“If it were any smarter, it'd write a book – \
 a book that would make Ulysses look like it was written in crayon.” \
-~ Justin Hammer, Iron Man 2",
+~ Justin Hammer, *Iron Man 2*",
 "“I don’t want to kill anyone. I don’t like bullies. I don’t care where they’re from.” \
-~ Steve Rogers, Captain America: The First Avenger",
+~ Steve Rogers, *Captain America: The First Avenger*",
 "“He will be the first in a new breed of super-soldiers. \
 And they will personally escort Adolf Hitler to the gates of Hell.” \
-~ Colonel Phillips, Captain America: The First Avenger",
-"“I can do this all day.” ~ Steve Rogers, Captain America: The First Avenger",
-"“That’s my secret, Captain. I’m always angry.” ~ Bruce Banner, Avengers",
-"“We have a Hulk.” ~ Tony Stark, Avengers",
+~ Colonel Phillips, *Captain America: The First Avenger*",
+"“I can do this all day.” ~ Steve Rogers, *Captain America: The First Avenger*",
+"“That’s my secret, Captain. I’m always angry.” ~ Bruce Banner, *Avengers*",
+"“We have a Hulk.” ~ Tony Stark, *Avengers*",
 "“There’s no throne, there is no version of this, \
 where you come out on top. Maybe your army comes and maybe \
 it’s too much for us, but it’s all on you. Because if we \
 can’t protect the Earth, you can be damned well sure we’ll avenge it.” \
-~ Tony Stark, Avengers",
+~ Tony Stark, *Avengers*",
 "“This is so unlike you, brother. So clandestine. \
 Are you sure you wouldn’t rather just punch your way out?” \
-~Loki, Thor: The Dark World"
+~Loki, *Thor: The Dark World*"
 "“You get hurt, hurt 'em back. You get killed… walk it off.” \
-~ Captain America, Avengers: Age of Ultron"
+~ Captain America, *Avengers: Age of Ultron*"
 "“You never know. You hope for the best and make do with what you get.” \
-~ Nick Fury, Avengers: Age of Ultron"
+~ Nick Fury, *Avengers: Age of Ultron*"
 "“He just kicked your ass, full-size. You really want to find out what it's \
-like when you can't see him coming?” ~Howard Stark, Ant-Man"]
+like when you can't see him coming?” ~Howard Stark, *Ant-Man*"]
     
 def get_prefix(client, message):
     with open("prefixes.json", "r") as f:
@@ -169,8 +170,8 @@ async def prefix(context):
     current = prefixes[str(context.message.guild.id)]
     await context.send(f"My prefix for this server is {current}, Sir.") 
 
-@client.command(aliases = ['Time'])
-async def time(context):
+@client.command(aliases = ['Time', 'time'])
+async def _time(context):
     nt = datetime.now()
     await context.send(f"It's {nt.hour:02d}:{nt.minute:02d}, Sir.")
 
@@ -205,6 +206,7 @@ async def quote(context, *args):
 async def shutdown(context):
     await context.send("Shutting down.")
     await client.close()
+    config_file.close()
     
 
 client.run(TOKEN)
